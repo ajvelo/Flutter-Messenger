@@ -16,7 +16,21 @@ class RecentChats extends StatelessWidget {
         child: ListView.builder(
           itemCount: chats.length,
           itemBuilder: (BuildContext context, int index) {
-            return Text(chats[index].sender.name);
+            final Message chat = chats[index];
+            return Row(
+              children: <Widget>[
+                CircleAvatar(
+                  radius: 35.0,
+                  backgroundImage: AssetImage(chat.sender.imageUrl),
+                ),
+                Column(
+                  children: <Widget>[
+                    Text(chat.sender.name),
+                    Text(chat.text),
+                  ],
+                ),
+              ],
+            );
           },
         ),
       ),
